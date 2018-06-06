@@ -1,17 +1,56 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import AddCard from './components/AddCard';
+import AddDeck from './components/AddDeck';
+import configureStore from './store';
+import { Provider } from 'react-redux';
+import { createStackNavigator } from 'react-navigation';
+import DeckList from './components/DeckList';
 
 export default class App extends React.Component {
   render() {
+    console.log("ONLY ONES !!!!");
+    const store = configureStore();
+    
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider store={store}>
+        <Stack />
+      </Provider>
     );
   }
 }
+
+const Somecomp = ({navigation}) => (
+  <View>
+    <Text>
+      Some Component
+    </Text>
+  </View>
+);
+
+
+const Somecomp2 = ({navigation}) => (
+  <View>
+    <Text>
+      222222222222222
+    </Text>
+  </View>
+);
+const Stack = createStackNavigator({
+  Home: {
+    screen: DeckList,
+    navigationOptions: {
+      title: "Home"
+    }
+  },
+  AddDeck: {
+    screen: AddDeck,
+    navigationOptions: {
+      title: "AddDeck"
+    }
+  },
+})
 
 const styles = StyleSheet.create({
   container: {
