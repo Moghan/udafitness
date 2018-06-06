@@ -27,7 +27,7 @@ export class DeckItem extends Component {
         <Text style={{marginRight: 20}}>
         {`${cards.length} cards.`}
         </Text>
-        <Btn style={{marginRight: 5}} onPress={() => this.props.navigation.navigate("Deck", this.props.deck)}>
+        <Btn style={{marginRight: 5}} onPress={() => this.props.navigation.navigate("AddCard", this.props.deck)}>
           <Text>
             +Card
           </Text>

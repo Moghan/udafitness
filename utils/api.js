@@ -17,7 +17,24 @@ export const removeEntry = (key) => {
       const data = JSON.parse(results);
       data[key] = undefined;
       delete data[key];
-      AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(dta));
+      AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
+    })
+}
+
+export const modifyEntry = (key, deck) => {
+  return AsyncStorage.getItem(DECK_STORAGE_KEY)
+    .then((results) => {
+      const data = JSON.parse(results);
+      data[key] = deck;
+      AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
+    })
+}
+
+export const getItem = (key) => {
+  return AsyncStorage.getItem(DECK_STORAGE_KEY)
+    .then((results) => {
+      const deck = JSON.parse(results)[key];
+      return deck;
     })
 }
 

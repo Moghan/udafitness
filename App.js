@@ -22,22 +22,6 @@ export default class App extends React.Component {
   }
 }
 
-const Somecomp = ({navigation}) => (
-  <View>
-    <Text>
-      Some Component
-    </Text>
-  </View>
-);
-
-
-const Somecomp2 = ({navigation}) => (
-  <View>
-    <Text>
-      222222222222222
-    </Text>
-  </View>
-);
 const Stack = createStackNavigator({
   Home: {
     screen: DeckList,
@@ -55,6 +39,12 @@ const Stack = createStackNavigator({
     screen: Deck,
     navigationOptions: {
       title: "Deck"
+    }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: "Add Card"
     }
   }
 })

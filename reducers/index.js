@@ -1,5 +1,5 @@
-import { ADD_CARD, ADD_DECK, SET_DECKS } from '../actions';
-import { getDecks } from '../utils/api';
+import { ADD_CARD, ADD_DECK, SET_DECKS } from '../actions/tokens';
+import * as API from '../utils/api';
 
 /*{
   one: {
@@ -37,17 +37,11 @@ import { getDecks } from '../utils/api';
     ]
   }
 };*/
-//console.log('getD ', getDecks());
-let deck_initial_state;
-getDecks().then((result) => {
-  deck_initial_state = result;
-});
 
-const decks = (state = deck_initial_state, action) => {
+const decks = (state = {}, action) => {
   switch(action.type) {
     case ADD_DECK: {
       const { id, name } = action;
-      console.log("add_deck", id, name);
       return {
         ...state,
         [id]: {
@@ -58,13 +52,15 @@ const decks = (state = deck_initial_state, action) => {
     }
     case ADD_CARD: {
       const { deckId, card } = action;
-      console.log('add_card', deckId, card);
+      const modifiedDeck = {
+        ...state[deckId],
+        cards: [...state[deckId].cards, card]
+      }
+
+      API.modifyEntry(deckId, modifiedDeck);
       return {
         ...state,
-        [deckId]: {
-          ...state[deckId],
-          cards: [...state[deckId].cards, card]
-        }
+        [deckId]: modifiedDeck
       }
     }
     case SET_DECKS: {

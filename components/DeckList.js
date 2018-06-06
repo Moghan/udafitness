@@ -52,7 +52,7 @@ export class DeckList extends Component {
 }
 
 const mapStateToProps= (state = {}) => {
-  const deckList = Object.keys(state).map(deck => state[deck]);
+  const deckList = Object.keys(state).map(deck => ({ ...state[deck], id: deck }));
   return ({
     deckList
   })

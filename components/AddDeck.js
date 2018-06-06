@@ -32,15 +32,13 @@ export class AddDeck extends Component {
 
     //const d = getDecks();
     //console.log('D ', d);
-    getDecks().then((r) => {
+    /*getDecks().then((r) => {
       console.log('R = ', r);
-    })
+    })*/
 
   }
 
-  render() {
-    console.log('wl ', window.localStorage);
-    
+  render() {    
     return (
       <View>
         <Text>

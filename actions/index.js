@@ -1,20 +1,18 @@
-export const ADD_DECK = 'ADD_DECK';
-export const ADD_CARD = 'ADD_CARD';
-export const SET_DECKS = 'SET_DECKS';
+import * as action from './tokens';
 
 export const addDeck = ({ id, name }) => ({
-  type: ADD_DECK,
+  type: action.ADD_DECK,
   id,
   name
 })
 
-export const addCard = card => ({
-  type: ADD_CARD,
-  card
+export const addCard = ({ card, deckId }) => ({
+  type: action.ADD_CARD,
+  card,
+  deckId
 })
 
 export const setDecks = decks => ({
-  type: SET_DECKS,
+  type: action.SET_DECKS,
   decks
 })
-
