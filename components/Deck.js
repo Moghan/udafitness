@@ -8,13 +8,13 @@ const Btn = styled.TouchableOpacity``
 
 export class Deck extends Component {
   render() {
-    const { name , cards } = this.props.deck;
-    console.log('deck ', name, cards);
+    const { name , cards } = this.props.navigation.state.params;
+    console.log('deck props', name, cards);
     return (
       <View>
         <Btn>
           <Text>
-            {name}
+            name
           </Text>
         </Btn>
       </View>

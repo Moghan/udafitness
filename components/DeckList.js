@@ -6,13 +6,18 @@ import styled from 'styled-components/native';
 import { getDecks } from '../utils/api';
 import { setDecks } from '../actions';
 import Deck from './Deck';
+import DeckItem from './DeckItem';
 
 const AddBtn = styled.TouchableOpacity``
+const Btn = styled.TouchableOpacity``
+
+
 
 export class DeckList extends Component {
   componentDidMount() {
     console.log('decklist mount ', this.props.state);
     getDecks().then((result) => {
+      console.log('setDecks res ', result);
       this.props.setDecks(result);
     });
   }
@@ -20,13 +25,21 @@ export class DeckList extends Component {
   componentDidUpdate() {
     console.log('decklist update ', this.props.deckList);
   }
+
   render() {
+    const DeckBtn = ({deck}) =>
+      <Btn onPress={() => this.props.navigation.navigate("Deck", deck)}>
+        <Text>
+          {`Play ${deck.name}! ${deck.cards.length} cards.`}
+        </Text>
+      </Btn>
+      
     const { deckList } = this.props;
-    console.log("DeckList", deckList);
+    //console.log("DeckList", deckList);
     return (
       <View>
         { deckList.map((deck, index) => (
-          <Deck key={index} deck={deck} />
+          <DeckItem key={index} deck={deck} navigation={this.props.navigation}/>
         )) }
         <AddBtn onPress={() => this.props.navigation.navigate("AddDeck")}>
           <Text>
