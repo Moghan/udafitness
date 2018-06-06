@@ -27,13 +27,13 @@ export class DeckList extends Component {
   }
 
   render() {
-    const DeckBtn = ({deck}) =>
-      <Btn onPress={() => this.props.navigation.navigate("Deck", deck)}>
+    /*const DeckBtn = ({deck}) =>
+      <Btn onPress={() => this.props.navigation.navigate("PlayDeck", deck)}>
         <Text>
           {`Play ${deck.name}! ${deck.cards.length} cards.`}
         </Text>
       </Btn>
-      
+      */
     const { deckList } = this.props;
     //console.log("DeckList", deckList);
     return (

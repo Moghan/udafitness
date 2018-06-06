@@ -19,7 +19,7 @@ export class DeckItem extends Component {
     const { name, cards } = this.props.deck;
     return (
       <ItemView >
-        <Btn style={{minWidth: 200, marginRight: 'auto', paddingLeft: 5}} onPress={() => this.props.navigation.navigate("Deck", this.props.deck)}>
+        <Btn style={{minWidth: 200, marginRight: 'auto', paddingLeft: 5}} onPress={() => this.props.navigation.navigate("PlayDeck", this.props.deck)}>
           <Text>
             {name}
           </Text>

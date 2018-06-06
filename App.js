@@ -7,7 +7,7 @@ import configureStore from './store';
 import { Provider } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 import DeckList from './components/DeckList';
-import Deck from './components/Deck';
+import PlayDeck from './components/PlayDeck';
 
 export default class App extends React.Component {
   render() {
@@ -35,10 +35,10 @@ const Stack = createStackNavigator({
       title: "AddDeck"
     }
   },
-  Deck: {
-    screen: Deck,
+  PlayDeck: {
+    screen: PlayDeck,
     navigationOptions: {
-      title: "Deck"
+      title: "Play Deck"
     }
   },
   AddCard: {
