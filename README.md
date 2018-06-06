@@ -11,6 +11,7 @@ $ yarn start
 ```
 
 Use Expo to try it out!
+
 Expo on Google Play
 https://play.google.com/store/apps/details?id=host.exp.exponent
 
