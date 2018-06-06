@@ -1,4 +1,4 @@
-# reactnd-project-readable
+# reactnd-project-mobile-flashcards
 React nanodegree project - Udacity
 
 Download or fork and clone this repo:
