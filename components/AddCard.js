@@ -31,7 +31,9 @@ export class AddCard extends Component {
     const card = {
       ...this.state
     }
+    console.log('bef addCard disp', id, card);
     this.props.addCard({ deckId: id, card} );
+    console.log('aft addCard disp');
     this.props.navigation.navigate("Home");
   }
   render() {

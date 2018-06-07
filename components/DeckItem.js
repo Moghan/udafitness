@@ -16,11 +16,11 @@ const ItemView = styled.View`
 
 export default class DeckItem extends Component {
   render() {
-    const { name, cards } = this.props.deck;
+    const { name, cards, id } = this.props.deck;
 
     return (
       <ItemView >
-        <Btn style={{minWidth: 200, marginRight: 'auto', paddingLeft: 5}} onPress={() => this.props.navigation.navigate("Deck", this.props.deck)}>
+        <Btn style={{minWidth: 200, marginRight: 'auto', paddingLeft: 5}} onPress={() => this.props.navigation.navigate("Deck", id)}>
           <Text>
             {name} 
           </Text>

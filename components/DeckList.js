@@ -19,6 +19,7 @@ export class DeckList extends Component {
   }
 
   render() {
+    console.log('decklist render');
     const { deckList } = this.props;
 
     return (

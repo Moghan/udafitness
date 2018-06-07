@@ -6,10 +6,10 @@ import styled from 'styled-components/native';
 
 const Btn = styled.TouchableOpacity``
 
-export default class Deck extends Component {
+export class Deck extends Component {
   render() {
-    const { ...deck } = this.props.navigation.state.params;
-    
+    const { deck } = this.props;
+
     return (
       <View>
         <Text>
@@ -25,3 +25,12 @@ export default class Deck extends Component {
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => ({
+  deck: {
+    ...state[ownProps.navigation.state.params],
+    id: ownProps.navigation.state.params
+  }
+})
+
+export default connect(mapStateToProps)(Deck);

@@ -25,7 +25,7 @@ export class AddDeck extends Component {
 
     this.props.addDeck({id, name});
 
-    this.props.navigation.navigate("Home");
+    this.props.navigation.navigate("Deck", id);
 
     submitEntry(id, name);
   }
@@ -40,7 +40,7 @@ export class AddDeck extends Component {
           style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({text})}
           value={this.state.text} />
-        <SubmitBtn onPress={this.submit}>
+        <SubmitBtn onPress={this.submit} disabled={this.state.text.length === 0}>
           <Text>Press to create Deck</Text>
         </SubmitBtn>
       </View>
