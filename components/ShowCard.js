@@ -64,7 +64,7 @@ export default class ShowCard extends Component {
         <CardText>{ card.question }</CardText>
         <BtnContainer>
           <Btn onPress={() => this.setState({isFront: false})}>
-            <Text>Turn Card</Text>
+            <Text>Show answer</Text>
           </Btn>
         </BtnContainer>
       </View>

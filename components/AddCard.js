@@ -22,8 +22,8 @@ const CardView = styled.View`
 
 export class AddCard extends Component {
   state = {
-    question: 'write Q here',
-    answer: 'and answer here'
+    question: '',
+    answer: ''
   }
 
   handleOnPress = () => {
@@ -31,18 +31,17 @@ export class AddCard extends Component {
     const card = {
       ...this.state
     }
-    console.log('before dispartch');
     this.props.addCard({ deckId: id, card} );
-    console.log('after dispatch');
+    this.props.navigation.navigate("Home");
   }
   render() {
     const { id } = this.props.navigation.state.params;
     return (
       <CardView>
-        <Input value={this.state.question} onChangeText={(question) => this.setState({question})} />
-        <Input value={this.state.answer} onChangeText={(answer) => this.setState({answer})} />
-        <AddBtn onPress={this.handleOnPress}>
-          <Text style={{padding: 5 }}>add card</Text>
+        <Input value={this.state.question} placeholder='Question..' onChangeText={(question) => this.setState({question})} />
+        <Input value={this.state.answer} placeholder='Answer..' onChangeText={(answer) => this.setState({answer})} />
+        <AddBtn onPress={this.handleOnPress} disabled={this.state.question.length === 0 || this.state.answer.length === 0} >
+          <Text style={{padding: 5 }}>Add card</Text>
         </AddBtn>
       </CardView>
     )
