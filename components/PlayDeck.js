@@ -6,10 +6,20 @@ import styled from 'styled-components/native';
 import ShowCard from './ShowCard';
 
 const BtnContainer = styled.View`
-
+  flex-direction: row;
+  margin-top: 20px;
+  justify-content: center;
 `
-const NoBtn = styled.TouchableOpacity``
-const YesBtn = styled.TouchableOpacity``
+const NoBtn = styled.TouchableOpacity`
+  background: #c00;
+  width: 100px;
+  margin: 0 5px;
+`
+const YesBtn = styled.TouchableOpacity`
+  background: #060;
+  width: 100px;
+  margin:0 5px;
+`
 
 export class PlayDeck extends Component {
   state = {
@@ -24,14 +34,28 @@ export class PlayDeck extends Component {
     }))
   }
 
+  reset = () => {
+    this.setState({
+      count: 0,
+      rights: 0
+    });
+  }
+
   render() {
     const { cards } = this.props.navigation.state.params;
-    console.log('play deck cards ', cards);
-    console.log(this.state);
 
     const ShowResult = () => (
       <View>
         <Text>{`You got ${this.state.rights} out of ${cards.length}`}</Text>
+        <Text>Play it again ?</Text>
+        <BtnContainer>
+          <YesBtn onPress={this.reset}>
+            <Text>Yes</Text>
+          </YesBtn>
+          <NoBtn onPress={() => this.props.navigation.navigate("Home")}>
+            <Text>No</Text>
+          </NoBtn>
+        </BtnContainer>
       </View>
     );
 
