@@ -14,10 +14,10 @@ const ItemView = styled.View`
   padding: 5px 0;
 `
 
-export class DeckItem extends Component {
+export default class DeckItem extends Component {
   render() {
     const { name, cards } = this.props.deck;
-    console.log('deckitem ',this.props.deck);
+
     return (
       <ItemView >
         <Btn style={{minWidth: 200, marginRight: 'auto', paddingLeft: 5}} onPress={() => this.props.navigation.navigate("Deck", this.props.deck)}>
@@ -37,10 +37,3 @@ export class DeckItem extends Component {
     )
   }
 }
-
-const mapStateToProps= (state) => ({})
-
-const mapDispatchToProps = (dispatch) => ({
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeckItem);

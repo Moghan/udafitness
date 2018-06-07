@@ -12,7 +12,6 @@ import Deck from './components/Deck';
 
 export default class App extends React.Component {
   render() {
-    console.log("ONLY ONES !!!!");
     const store = configureStore();
     
     return (
@@ -55,12 +54,3 @@ const Stack = createStackNavigator({
     }
   }
 })
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

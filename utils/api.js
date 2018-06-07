@@ -39,7 +39,8 @@ export const getItem = (key) => {
 }
 
 export const getDecks = () => {
-  //AsyncStorage.removeItem(DECK_STORAGE_KEY);
+  /* Uncomment this line to delete all decks */
+  // AsyncStorage.removeItem(DECK_STORAGE_KEY);
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then((results) => {
       return JSON.parse(results);

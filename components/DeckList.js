@@ -11,31 +11,16 @@ import DeckItem from './DeckItem';
 const AddBtn = styled.TouchableOpacity``
 const Btn = styled.TouchableOpacity``
 
-
-
 export class DeckList extends Component {
   componentDidMount() {
-    console.log('decklist mount ', this.props.state);
     getDecks().then((result) => {
-      console.log('setDecks res ', result);
       this.props.setDecks(result);
     });
   }
 
-  componentDidUpdate() {
-    console.log('decklist update ', this.props.deckList);
-  }
-
   render() {
-    /*const DeckBtn = ({deck}) =>
-      <Btn onPress={() => this.props.navigation.navigate("PlayDeck", deck)}>
-        <Text>
-          {`Play ${deck.name}! ${deck.cards.length} cards.`}
-        </Text>
-      </Btn>
-      */
     const { deckList } = this.props;
-    //console.log("DeckList", deckList);
+
     return (
       <View>
         { deckList.map((deck, index) => (

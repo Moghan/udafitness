@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { addCard } from '../actions';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-//import { getMetricMetaInfo } from './utils/helpers';
 
 const AddBtn = styled.TouchableOpacity`
   background: #933;

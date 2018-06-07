@@ -21,7 +21,7 @@ const YesBtn = styled.TouchableOpacity`
   margin:0 5px;
 `
 
-export class PlayDeck extends Component {
+export default class PlayDeck extends Component {
   state = {
     count: 0,
     rights: 0,
@@ -70,11 +70,3 @@ export class PlayDeck extends Component {
     )
   }
 }
-
-const mapStateToProps= (state) => ({
-})
-
-const mapDispatchToProps = (dispatch) => ({
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlayDeck);

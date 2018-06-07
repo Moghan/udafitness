@@ -10,6 +10,8 @@ $ yarn install
 $ yarn start
 ```
 
+Tested only on Android !
+
 Use Expo to try it out!
 
 Expo on Google Play

@@ -10,7 +10,6 @@ const SubmitBtn = styled.TouchableOpacity`
   background: #933
 `
 
-
 export class AddDeck extends Component {
   state = {
     text:  ''
@@ -26,16 +25,9 @@ export class AddDeck extends Component {
 
     this.props.addDeck({id, name});
 
-    // nav home
+    this.props.navigation.navigate("Home");
 
     submitEntry(id, name);
-
-    //const d = getDecks();
-    //console.log('D ', d);
-    /*getDecks().then((r) => {
-      console.log('R = ', r);
-    })*/
-
   }
 
   render() {    

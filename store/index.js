@@ -4,10 +4,10 @@ import reducer from '../reducers';
 const configureStore = () => {
   const store = createStore(reducer);
 
-  store.subscribe(() => {
+ /* store.subscribe(() => {
     window.localStorage = JSON.stringify(store.getState());
   });
-
+*/
   return store;
 }
 
