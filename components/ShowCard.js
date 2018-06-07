@@ -4,63 +4,94 @@ import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-const Btn = styled.TouchableOpacity``
+const Btn = styled.TouchableOpacity`
+  width: 100px;
+  margin: 0 10px;
+  padding: 5px;
+  background: #933
+`
 
+const CardContainer = styled.View`
+  margin: 10px;
+  padding: 2px;
+  border: 1px solid gray;
+`
 
+const QAText = styled.Text`
+  margin: 10px auto 0 auto;
+  padding: 10px;
+  font-size: 12;
+`
 
-export class ShowCard extends Component {
+const CardText = styled.Text`
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 16;
+`
+
+const BtnContainer = styled.View`
+  flex-direction: row;
+  margin-top: 20px;
+  justify-content: center;
+`
+
+const RightBtn = Btn.extend`
+  background: #060
+`
+
+const WrongBtn = Btn.extend`
+  background: #c00
+`
+
+export default class ShowCard extends Component {
   state = {
-    first: true
+    isFront: true
   }
 
-  handleRights = () => {
+  handlePressAnswer = (isCorrect) => {
     this.setState({
-      first: true,
+      isFront: true,
     })
-    this.props.handleNext();
+    this.props.handleAnswer(isCorrect);
   }
 
   render() {
     const { card } = this.props;
-    console.log('show card ', card);
-    console.log(this.state);
+
+    const ShowQuestion = () => (
+      <View>
+        <QAText>Question</QAText>
+        <CardText>{ card.question }</CardText>
+        <BtnContainer>
+          <Btn onPress={() => this.setState({isFront: false})}>
+            <Text>Turn Card</Text>
+          </Btn>
+        </BtnContainer>
+      </View>
+    );
+
+    const ShowAnswer = () => (
+      <View>
+        <QAText>Answer</QAText>
+        <CardText>{card.answer}</CardText>
+        <BtnContainer>
+          <RightBtn onPress={() => this.handlePressAnswer(true)}>
+            <Text>New it.</Text>
+          </RightBtn>
+          <WrongBtn onPress={() => this.handlePressAnswer(false)}>
+            <Text>Whaaat!</Text>
+          </WrongBtn>
+        </BtnContainer>
+      </View>
+    );
 
     return (
-      <View>
-        { this.state.first ?
-          <View>
-            <Text>
-              {card.question}
-            </Text>
-            <Btn onPress={() => this.setState({first: false})}>
-              <Text>Turn Card</Text>
-            </Btn>
-          </View>
-          :
-          <View>
-            <Text>
-              {card.answer}
-            </Text>
-            <Btn onPress={() => {
-              this.setState({first: true});
-              this.props.handleAnswer(true);
-            }}>
-              <Text>New it.</Text>
-            </Btn>
-            <Btn onPress={() => this.props.handleAnswer(false)}>
-              <Text>Whaaat!</Text>
-            </Btn>
-          </View>
-        }
-      </View>
+      <CardContainer>
+        <Text style={{paddingTop: 5, paddingLeft: 5, fontSize: 9}}>
+          {`Remaining questions: ${this.props.remainingCount}`}
+        </Text>
+        { this.state.isFront ? <ShowQuestion /> : <ShowAnswer /> }
+      </CardContainer>
     )
   }
 }
-
-const mapStateToProps= (state) => ({
-})
-
-const mapDispatchToProps = (dispatch) => ({
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShowCard);

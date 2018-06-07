@@ -5,13 +5,16 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import ShowCard from './ShowCard';
 
-const Btn = styled.TouchableOpacity``
+const BtnContainer = styled.View`
+
+`
+const NoBtn = styled.TouchableOpacity``
+const YesBtn = styled.TouchableOpacity``
 
 export class PlayDeck extends Component {
   state = {
     count: 0,
     rights: 0,
-    wrongs: 0
   }
 
   handleAnswer = (isCorrect) => {
@@ -35,7 +38,7 @@ export class PlayDeck extends Component {
     return (
       <View>
         { this.state.count < cards.length ?
-          <ShowCard card={cards[this.state.count]} handleAnswer={this.handleAnswer}/>
+          <ShowCard card={cards[this.state.count]} handleAnswer={this.handleAnswer} remainingCount={cards.length - this.state.count}/>
           :
           <ShowResult />
         }

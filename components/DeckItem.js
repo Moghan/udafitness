@@ -17,11 +17,12 @@ const ItemView = styled.View`
 export class DeckItem extends Component {
   render() {
     const { name, cards } = this.props.deck;
+    console.log('deckitem ',this.props.deck);
     return (
       <ItemView >
-        <Btn style={{minWidth: 200, marginRight: 'auto', paddingLeft: 5}} onPress={() => this.props.navigation.navigate("PlayDeck", this.props.deck)}>
+        <Btn style={{minWidth: 200, marginRight: 'auto', paddingLeft: 5}} onPress={() => this.props.navigation.navigate("Deck", this.props.deck)}>
           <Text>
-            {name}
+            {name} 
           </Text>
         </Btn>
         <Text style={{marginRight: 20}}>

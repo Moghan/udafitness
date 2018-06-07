@@ -52,6 +52,7 @@ const decks = (state = {}, action) => {
     }
     case ADD_CARD: {
       const { deckId, card } = action;
+      console.log('ADD CARD state[deck] ', state[deckId]);
       const modifiedDeck = {
         ...state[deckId],
         cards: [...state[deckId].cards, card]
