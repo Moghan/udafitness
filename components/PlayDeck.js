@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import ShowCard from './ShowCard';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 const BtnContainer = styled.View`
   flex-direction: row;
@@ -39,6 +40,14 @@ export default class PlayDeck extends Component {
       count: 0,
       rights: 0
     });
+  }
+
+  componentDidUpdate() {
+    const { cards } = this.props.navigation.state.params;
+    if(this.state.count === this.props.navigation.state.params.cards.length) {
+      clearLocalNotification()
+        .then(setLocalNotification);
+    }
   }
 
   render() {

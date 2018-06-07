@@ -9,8 +9,13 @@ import { createStackNavigator } from 'react-navigation';
 import DeckList from './components/DeckList';
 import PlayDeck from './components/PlayDeck';
 import Deck from './components/Deck';
+import { setLocalNotification } from './utils/helpers';
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     const store = configureStore();
     
